@@ -9,6 +9,7 @@ public class fraction {
         this.numerator = numerator;
         if(denominator == 0){
             // TODO error out
+            return;
         }
         this.denominator =  denominator;
         simplify();
