@@ -8,7 +8,6 @@ public class fraction {
     public fraction(int numerator, int denominator){
         this.numerator = numerator;
         if(denominator == 0){
-            // TODO error out
             return;
         }
         this.denominator =  denominator;
@@ -25,7 +24,6 @@ public class fraction {
     
     public void setDenominator(int d){
         if(d == 0){
-            // TODO error out
             return;
         }
         this.denominator = d;
