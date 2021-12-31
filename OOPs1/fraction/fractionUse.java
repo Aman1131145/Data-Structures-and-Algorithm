@@ -2,7 +2,7 @@ package OOPs1.fraction;
 
 public class fractionUse {
 
-    public static void main(String[] args) {
+    public static void temp() {
 		fraction f1 = new fraction(20,30);
 		f1.print();
 		// 2/3
@@ -14,9 +14,16 @@ public class fractionUse {
 		f1.print();
 		
 		f1.setNumerator(10);
-		f1.setDenominator(30);
-		// 1/3
-		f1.print();
+		int i = 47;
+		try {
+			f1.setDenominator(0);
+			i++;
+		}catch(ZeroDenominatorException e) {
+			System.out.println("Hey don't input 0 as denominator");
+		}finally{
+			System.out.println("Finally Block Printed");
+		}
+		System.out.println(i);
 		
 		fraction f2 = new fraction(3,4);
 		f1.add(f2);
@@ -36,5 +43,8 @@ public class fractionUse {
 		f1.print();
 		f3.print();
 		f4.print();
+	}
+	public static void main(String[] args) {
+		temp();
 	}
 }
