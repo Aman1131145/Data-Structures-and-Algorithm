@@ -1,13 +1,10 @@
 package OOPs1.polynomialClass;
 
-import OOPs1.dynamicArray.DynamicArray;
-
 public class Polynomial {
 
-    DynamicArray coefficients;
     private int deg;
     private int coeff[];
-    
+
     public Polynomial(){
         coeff = new int[10];
         deg = -1;
@@ -18,24 +15,19 @@ public class Polynomial {
         coeff = new int[coeff.length * 2];
         for(int i = 0; i < temp.length; i++){
             coeff[i] = temp[i];
-            System.out.println(coeff);
         }
     }
 
     public void setCoefficient(int deg, int coeff){
-		for(int i = 0; i <= 100; i++){
-            if(i>this.coeff.length){
-                reconstruct();
-            }
-            this.coeff[i] = i;
-        }
-        System.out.println(coeff);
-        // if(coeff >= this.coeff.length){
-		// 	reconstruct();
-		// }else{
-		// 	this.deg = deg;
-        // 	this.coeff[deg] = coeff;
-		// }
+		
+        if(coeff >= this.coeff.length){
+			reconstruct();
+		}
+		this.deg = deg;
+        this.coeff[deg] = coeff;
+        
+        System.out.println(coeff + "x^" + deg + "is Created");
+        System.out.println(this.coeff.length+ "coeff.length ");
     }
 
     public int getCoefficient(int deg){
@@ -47,16 +39,9 @@ public class Polynomial {
     }
 
     public void print(){
-        for(int i = 0; i <= this.coeff.length; i++){
-            if(coeff[i] == 0){
-				continue;
-			}if(coeff[deg] == 0){
-				System.out.println(coeff[i] + "x^" + " + ");
-			}else{
-				System.out.print(coeff[i] + "x^" + coeff[deg] + " + " );
-			}
+        for(int i = 0; i <= coeff.length; i++){
+            System.out.print(coeff[i] + "x^" + i + " + ");
         }
-		System.out.println();
     }
 
     public void add(Polynomial p){
