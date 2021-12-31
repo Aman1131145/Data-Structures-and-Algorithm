@@ -1,6 +1,6 @@
 package Recursion;
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class Sum {
 
@@ -13,23 +13,24 @@ public class Sum {
         }
 
         int smallInput[] = new int[input.length-1];
-        for(int i = 1; i < input.length; i++){
+        for(int i = 1; i <= input.length - 1; i++){
             smallInput[i-1] = input[i];
         }
 
-        int smallAns = sum(smallInput);
-        
+        return sum(input) + sum(smallInput) ;
+
 
     }
+    
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int n = s.nextInt();
-	    int input[] = new int[n];
-	    for(int i = 0; i < n; i++) {
-		    input[i] = s.nextInt();
-	    }
+        // Scanner s = new Scanner(System.in);
+        // int n = s.nextInt();
+	    int input[] = {9,8,9};
+	    // for(int i = 0; i < n; i++) {
+		//     input[i] = s.nextInt();
+	    // }
 	    System.out.println(Sum.sum(input)); 
-        s.close();
+        // s.close();
     }
       
 }
