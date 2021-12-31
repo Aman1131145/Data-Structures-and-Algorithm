@@ -17,15 +17,13 @@ public class Sum {
             smallInput[i-1] = input[i];
         }
 
-        return sum(input) + sum(smallInput) ;
-
-
+        return input[0] + sum(smallInput);
     }
     
     public static void main(String[] args) {
         // Scanner s = new Scanner(System.in);
         // int n = s.nextInt();
-	    int input[] = {9,8,9};
+	    int input[] = {1,2,3,4,5,6,7,8,9,10};
 	    // for(int i = 0; i < n; i++) {
 		//     input[i] = s.nextInt();
 	    // }
