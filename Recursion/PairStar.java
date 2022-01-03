@@ -18,7 +18,7 @@ public class PairStar {
 	}
     public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		String input = "ababaab";//s.nextLine();
+		String input = "xxxyyyzwwzzz";//s.nextLine();
 		System.out.println(PairStar.pairStar(input));
         s.close();
 	}    
