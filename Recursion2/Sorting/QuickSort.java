@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class QuickSort {
 
+	private static void swap(int[] arr, int i, int j){
+    	int temp = arr[i];
+    	arr[i] = arr[j];
+    	arr[j] = temp;
+	}
+
     public static void quickSort(int[] input) {
 		sort(input, 0, input.length - 1);
 	}
@@ -12,40 +18,28 @@ public class QuickSort {
         if(startIndex >= endIndex){
             return;
         }
-
-        int pivotPos = partition(input, startIndex, endIndex);
-
-        sort(input, startIndex, pivotPos-1);
-        sort(input, pivotPos + 1, endIndex);
+		if(startIndex < endIndex){
+			int pivotPos = partition(input, startIndex, endIndex);
+	 
+			sort(input, startIndex, pivotPos-1);
+			sort(input, pivotPos + 1, endIndex);
+		}
+        
     }
 
     private static int partition(int[] input, int startIndex, int endIndex) {
-        int count = 0;
-        int pivot = input[startIndex];
+        int pivot = input[endIndex];
 
-        for(int i = startIndex; i <= endIndex; i++){
-            if(pivot >= input[i]){
-                count = count+1;
-            }
-        }
+        int i = (startIndex-1);
 
-        int pivotPos = startIndex + count;
-		int temp = input[pivotPos];
-		input[pivotPos] = input[startIndex];
-		input[startIndex] = temp;
-
-        for(int i = startIndex; i <= pivotPos; i++){
-			if(input[i]>input[pivotPos]){
-                for(int j = endIndex; j > pivotPos; j--){
-                    if(input[j] > input[pivotPos]){
-                        int temp1 = input[j];
-                        input[j] = input[i];
-                        input[i] = temp1;
-                    }
-                }
-            }
-        }
-		return pivotPos;
+       for(int j = startIndex; j <= endIndex; j++){
+		   if(input[j]<pivot){
+			   i++;
+			   swap(input, i, j);
+		   }
+	   }
+	   swap(input, i+1, endIndex);
+	   return i+1;
     }
 
     static Scanner s = new Scanner(System.in);
