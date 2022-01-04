@@ -28,7 +28,6 @@ public class QuickSort {
                 count = count+1;
             }
         }
-		System.out.println(count);
 
         int pivotPos = startIndex + count;
 		int temp = input[pivotPos];
