@@ -14,18 +14,28 @@ public class KeypadProblem {
         s.close();
     }
 
+	
+
 	private static String[] keypad(int n){
 		if(n==0||n==1){
-			String[] ans = {""};
-			return ans;
+			String[] finalAns = {""};
+			return finalAns;
 		}
 
 		int num = n%10;
 		String[] ans = keypad(n/10);
-		String helpAns = helper(num);
+		String smallAns = helper(num);
 
-		String 
-		
+		String finalAns[] = new String[ans.length*smallAns.length()];
+
+		int k = 0;		
+		for(int i = 0; i < ans.length; i++){
+			for(int j = 0; j < smallAns.length(); j++){
+				finalAns[k] = ans[i] + smallAns.charAt(j);
+				k++;		 
+			}
+		}
+		return finalAns;
 	}
 
 	private static String helper(int num){
@@ -60,4 +70,3 @@ public class KeypadProblem {
 	}
 
 }
- 
