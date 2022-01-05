@@ -2,203 +2,65 @@ package OOPs1.polynomialClass;
 
 public class Polynomial {
 
-    private int deg;
-    private int coeff[];
+    int coefficient[]=new int[100];
 
-    public Polynomial(){
-        coeff = new int[10];
-        deg = -1;
-    }
-
-    private void reconstruct(){
-        int temp[] = coeff;
-        coeff = new int[coeff.length * 2];
-        for(int i = 0; i < temp.length; i++){
-            coeff[i] = temp[i];
-        }
-    }
-
-    public void setCoefficient(int deg, int coeff){
-		
-        if(coeff >= this.coeff.length){
-			reconstruct();
-		}
-		this.deg = deg;
-        this.coeff[deg] = coeff;
-        
-        System.out.println(coeff + "x^" + deg + "is Created");
-        System.out.println(this.coeff.length+ "coeff.length ");
-    }
-
-    public int getCoefficient(int deg){
-        return coeff[deg];
-    }
-
-    public int degree(){
-        return coeff[deg];
-    }
-
-    public void print(){
-        for(int i = 0; i <= coeff.length; i++){
-            System.out.print(coeff[i] + "x^" + i + " + ");
-        }
-    }
-
-    public void add(Polynomial p){
-        int p1 = this.coeff.length;
-        int p2 = p.coeff.length;
-        int maximum = Math.max(p1,p2);
-        for(int i = 0; i <= maximum; i++){
-            this.coeff[i] = this.coeff[i] + p.coeff[i];
-			if(i > this.coeff.length){
-				reconstruct();
+	/* This function sets coefficient for a particular degree value, if degree is not there in the polynomial
+	 *  then corresponding term(with specified degree and value is added int the polynomial. If the degree
+	 *  is already present in the polynomial then previous coefficient is replaced by
+	 *  new coefficient value passed as function argument
+	*/
+	public void setCoefficient(int degree, int coeff){
+        coefficient[degree]+=coeff;
+	}
+	
+	// Prints all the terms(only terms with non zero coefficients are to be printed) in increasing order of degree. 
+	public void print(){
+		for(int i =0 ;i<coefficient.length;i++){
+			if(coefficient[i]!=0){
+				System.out.print(coefficient[i]+"x"+i+" ");
 			}
         }
-    }
+	}
 
-    // public void subtract(Polynomial p){}
-
-    // public void multiply(Polynomial p){}
- 
-    // public int evaluate(int x){
-
-    // }
-
-    // public static Polynomial add(Polynomial p1, Polynomial p2){
-
-    // }
-    
-//     public class Polynomial {
-// 	    private int[] coeffa;
-// 	    private int degree;
-	    
-	    
-// 	    public Polynomial(){
-// 	        coeffa = new int[5];
-// 	        degree = -1;
-// 	    }
-
+	
+	// Adds two polynomials and returns a new polynomial which has result
+	public Polynomial add(Polynomial p){
+        for(int i=0;i<this.coefficient.length;i++){
+			for(int j=0;j<p.coefficient.length;j++){
+				if(i==j && (this.coefficient[i]!=0 || p.coefficient[j]!=0)){
+					this.coefficient[i]+=p.coefficient[j];
+				}
+			}
+		}
+        return this;
 		
-// 		/* This function sets coefficient for a particular degree value, if degree is not there in the polynomial
-// 		 *  then corresponding term(with specified degree and value is added int the polynomial. If the degree
-// 		 *  is already present in the polynomial then previous coefficient is replaced by
-// 		 *  new coefficient value passed as function argument
-// 		*/
-// 		public void setCoefficient(int degree, int coeff){
-// 	        if (degree >= coeffa.length){
-// 	            restructure(degree);
-// 	        }
-	        
-// 	        coeffa[degree] = coeff;
-	        
-// 	        if (degree >= this.degree){
-// 	            this.degree = degree;
-// 	        }
+	}
+	
+	// Subtracts two polynomials and returns a new polynomial which has result
+	public Polynomial subtract(Polynomial p){
+			for(int i=0;i<this.coefficient.length;i++){
+			for(int j=0;j<p.coefficient.length;j++){
+				if(i==j && (this.coefficient[i]!=0 || p.coefficient[j]!=0)){
+					this.coefficient[i]-=p.coefficient[j];
+				}
+			}
+		}
+        return this;
+	}
+	
+	// Multiply two polynomials and returns a new polynomial which has result
+	public Polynomial multiply(Polynomial p){
+		Polynomial a =new Polynomial();
+
+		for(int i=0;i<this.coefficient.length/2;i++){
+			for(int j=0;j<p.coefficient.length/2;j++){
+
+				a.coefficient[(i+j)]+=this.coefficient[i]*p.coefficient[j];
+
+			}
 			
-// 		}
-		
-// 		// Prints all the terms(only terms with non zero coefficients are to be printed) in increasing order of degree. 
-// 		public void print(){
-// 			for(int i = 0; i<coeffa.length; i++){
-// 	            if (coeffa[i]!=0){
-// 	                System.out.print(coeffa[i] + "x" + i + " "); //check format of printing.
-// 	            }
-// 	        }
-// 		}
+		}
+		return a;
 
-		
-// 		// Adds two polynomials and returns a new polynomial which has result
-// 		public Polynomial add(Polynomial p){
-	        
-// 	        Polynomial x = new Polynomial();
-	        
-// 	        int i = 0;
-// 	        int j = 0;
-// 	        int k = 0;
-	        
-// 	        while(i<p.coeffa.length && j<this.coeffa.length){
-// 	            x.setCoefficient(k, p.coeffa[i] + this.coeffa[j]);
-// 	            k++;
-// 	            i++;
-// 	            j++;
-// 	        }
-	        
-// 	        while (i<p.coeffa.length){
-// 	            x.setCoefficient(k, p.coeffa[i]);
-// 	            i++;
-// 	            k++;
-// 	        }
-	        
-// 	        while (j<this.coeffa.length){
-// 	            x.setCoefficient(k, this.coeffa[j]);
-// 	            j++;
-// 	            k++;
-// 	        }
-	        
-// 	        return x;
-	        
-// 		}
-		
-// 		// Subtracts two polynomials and returns a new polynomial which has result
-// 		public Polynomial subtract(Polynomial p){
-// 	        Polynomial x = new Polynomial();
-	        
-// 	        int i = 0;
-// 	        int j = 0;
-// 	        int k = 0;
-	        
-// 	        while(i<p.coeffa.length && j<this.coeffa.length){
-// 	            x.setCoefficient(k, p.coeffa[i] - this.coeffa[j]);
-// 	            k++;
-// 	            i++;
-// 	            j++;
-// 	        }
-	        
-// 	        while (i<p.coeffa.length){
-// 	            x.setCoefficient(k, p.coeffa[i]);
-// 	            i++;
-// 	            k++;
-// 	        }
-	        
-// 	        while (j<this.coeffa.length){
-// 	            x.setCoefficient(k, -this.coeffa[j]);
-// 	            j++;
-// 	            k++;
-// 	        }
-	        
-// 	        return x;
-				
-// 		}
-		
-// 		// Multiply two polynomials and returns a new polynomial which has result
-// 		public Polynomial multiply(Polynomial p){
-	        
-// 	        Polynomial x = new Polynomial();
-	        
-// 	        for(int i = 0; i<p.coeffa.length;i++){
-// 	            for(int j = 0; j<this.coeffa.length; j++){
-// 	                if (i+j<=x.degree){
-// 	                    x.setCoefficient(i+j, x.coeffa[i+j] + p.coeffa[i] * this.coeffa[j]);
-	                    
-// 	                }
-	                
-// 	                else{
-// 	                    x.setCoefficient(i+j, p.coeffa[i] * this.coeffa[j]);
-// 	                }
-// 	            }
-// 	        }
-	        
-// 	        return x;
-	        
-	        
-// 			//return p;
-// 		}
-	    
-// 	    private void restructure(int degree){
-// 	        int[] temp = coeffa;
-// 	        coeffa = new int[degree+1];
-// 	        for(int i = 0; i<temp.length; i++){
-// 	            coeffa[i] = temp[i];
-// 	        }
-// 	    }
+	}
 }
