@@ -4,29 +4,29 @@ import java.util.Scanner;
 
 public class SubSequences {
 
-    private static String[] swap(String[] ans){
-        int length = 1;
-        int index = 0;
+    // private static String[] swap(String[] ans){
+    //     int length = 1;
+    //     int index = 0;
         
-        for(int i = 0; i <= ans.length-1; i++){
-            for(int j = 0; j <= ans.length; j++){
-                if(ans[i].length() == length){
-                    String temp = ans[i];
-                    ans[index] = ans[i];
-                    ans[i] = temp;
-                    index = index + 1;
-                }
-            }
-            length = length+1;
-        }
-        return ans ;
-    }
+    //     for(int i = 0; i <= ans.length-1; i++){
+    //         for(int j = 0; j <= ans.length; j++){
+    //             if(ans[i].length() == length){
+    //                 String temp = ans[i];
+    //                 ans[index] = ans[i];
+    //                 ans[i] = temp;
+    //                 index = index + 1;
+    //             }
+    //         }
+    //         length = length+1;
+    //     }
+    //     return ans ;
+    // }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = "xyz";//sc.next();
         String ans[] = SubSequences.subSequences(str);
-        ans = swap(ans);
+        // ans = swap(ans);
         for(int i = 0; i <= ans.length-1; i++){
             System.out.print(ans[i] + " ");
         }
