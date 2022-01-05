@@ -14,9 +14,7 @@ public class KeypadProblem {
         s.close();
     }
 
-	
-
-	private static String[] keypad(int n){
+	public static String[] keypad(int n){
 		if(n==0||n==1){
 			String[] finalAns = {""};
 			return finalAns;
@@ -61,12 +59,10 @@ public class KeypadProblem {
 			return "tuv";
 		}
 		if(num == 9){
-			return "xyz";
+			return "wxyz";
 		}
 		else{
 			return "";
-		}
-		
+		}	
 	}
-
 }
