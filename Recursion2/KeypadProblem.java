@@ -6,7 +6,7 @@ public class KeypadProblem {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-		int input = 23;//s.nextInt();
+		int input = s.nextInt();
 		String output[] = KeypadProblem.keypad(input);
 		for(int i = 0; i < output.length; i++) {
 			System.out.println(output[i]);
