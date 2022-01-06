@@ -6,8 +6,8 @@ public class PrintKeypad {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-		// int input = s.nextInt();
-        printKeypad(23);
+		int input = s.nextInt();
+        printKeypad(input);
 		s.close();
     }
 
