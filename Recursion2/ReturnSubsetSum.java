@@ -17,52 +17,52 @@ public class ReturnSubsetSum {
 	public static void main(String[] args) {
 		int[] input = takeInput();
 		int k = s.nextInt();
-		int output[][] = ReturnSubsetSum.subsetsSumK(input, k);
-		for(int i = 0; i < output.length; i++) {
-			for(int j = 0; j < output[i].length; j++) {
-				System.out.print(output[i][j] + " ");
+		int answer[][] = ReturnSubsetSum.subsetsSumK(input, k);
+		for(int i = 0; i < answer.length; i++) {
+			for(int j = 0; j < answer[i].length; j++) {
+				System.out.print(answer[i][j] + " ");
 			}
 			System.out.println();
 		}
 	}  
     
 	public static int[][] subsetsSumK(int[] input, int k) {
+        // this will call the subsetsetsSumK with an input a starting index and the sum whose components we want
 		return subsetsSumK(input, k, 0);
 	}
 
     private static int[][] subsetsSumK(int[] input, int k, int startIndex) {
+        /**BASE CASE
+         * if startIndex will be greater or equal to the length of input
+         * and if all the elements of that subset will sum up to k 
+		 * than we will return it as an answer
+		 * otherwise we will return 
+         */
         if(startIndex >= input.length){
-			int[][] answer = new int[1][0];
-            return answer;
-        }
-        int answer[] = new int[2];        
-        for(int i = 0; i < input.length; i++){
-            for(int j = i+1; j < input.length; j++){
-				if(input[i] + input[j] == k){
-					answer[0][] = i;
-					answer[1][] = j;
-					break;
-				}
+			if(k == 0){
+				return new int[1][0];
+			}else{
+				return new int[0][0];
 			}
         }
-        return answer;
-		// int[][]smallAns = subsetsSumK(input,startIndex+1);
-		// int[][] ans = new int[smallAns.length*2][];
-		// int c = 0;
-		// for(int i = 0; i < smallAns.length; i++){
-        //     ans[i] = new int[smallAns[i].length];
-		// 	for(int j = 0; j < smallAns[i].length; j++){
-		// 		ans[i][j] = smallAns[i][j];
-		// 	}
-		// 	c++;
-        // }
-        // for(int i = 0; i < smallAns.length; i++){
-        //     ans[c+i] = new int[smallAns[i].length + 1];
-		// 	ans[c+i][0] = input[startIndex];
-		// 	for(int j = 1; j <= smallAns[i].length; j++){
-		// 		ans[i+c][j] = smallAns[i][j-1];
-		// 	}
-        // }
-		// return ans;
-    }
+        int answer1[][] = subsetsSumK(input, k-input[startIndex], startIndex+1);
+        int answer2[][] = subsetsSumK(input, k, startIndex+1);
+		int answer[][] = new int[answer1.length + answer2.length][];
+
+		int l = 0 ;
+		for(int i=0;i<answer2.length;i++){
+			answer[i]=new int[answer2[i].length];
+			for(int j=0;j<answer2[i].length;j++)
+				answer[l][j]=answer2[i][j];
+			l++;
+		}
+		for(int i=0;i<answer1.length;i++){
+			answer[i+l]=new int[answer1[i].length+1];
+			answer[i+l][0]=input[startIndex];
+			for(int j=1;j<=answer1[i].length;j++){
+				answer[i+l][j]=answer1[i][j-1];
+			}
+		}
+		return answer;
+	}
 }
