@@ -30,20 +30,24 @@ public class PrintSubsetSum {
 		if(startindex == input.length){
 			if(k == 0 ){
 				for(int i = 0; i < output.length; i++){
-					System.out.println(output[i]);
+					System.out.print(output[i] + " ");
 				}
+				System.out.println();
+				return;
 			}
 			else {
 				return;
 			}
 		}
-
-		output = new int[output.length + 1];
-		for(int i = startindex; i < output.length; i++){
-			output[i] = input[i];
-		}
-		printSubsetsSumTok(input, k - input[startindex], startindex + 1, output);
 		printSubsetsSumTok(input, k, startindex + 1, output);
+
+		int[] newOutput = new int[output.length + 1];
+		int i = 0;
+		for(; i <= output.length-1; i++){
+			newOutput[i] = output[i];
+		}
+			newOutput[i] = input[startindex];
+		printSubsetsSumTok(input, k - input[startindex], startindex + 1, newOutput);
 	}
     
     
