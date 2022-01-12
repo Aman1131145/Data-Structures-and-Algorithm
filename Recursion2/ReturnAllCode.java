@@ -2,9 +2,10 @@ package Recursion2;
 
 import java.util.Scanner;
 
-public class ReturnAllCode {
-
-    public static void main(String[] args) {
+public class ReturnAllCode 
+{
+    public static void main(String[] args) 
+    {
 		Scanner s = new Scanner(System.in);
 		String input = s.next();
 		String output[] = ReturnAllCode.getCode(input);
@@ -13,93 +14,51 @@ public class ReturnAllCode {
 		}
         s.close();
 	}
-
-    public static String[] getCode(String input) {
-        return null;
-    }
-
-    private static String helper(int n){
-        if(n == 1){
-            return "a";
+    public static String[] getCode(String input)
+    {
+        // Write your code here
+        if(input.length()==0){
+            String ans[]={""};
+            return ans;
         }
-        if(n == 2){
-            return "b";
+  		
+        String smallans[]=getCode(input.substring(1));
+       
+        int an=input.charAt(0)-'0';
+        char firstchar=(char)('a'+an-1);
+      
+        for(int i=0;i<smallans.length;i++){
+            smallans[i] = firstchar+smallans[i];
         }
-        if(n == 3){
-            return "c";
+     
+        String smallans1[]=new String[0];
+        if(input.length()>=2)
+        {
+        	int ch1=input.charAt(0)-'0';
+            int ch2=input.charAt(1)-'0';
+            int an3=(ch1*10)+ch2;
+               
+            if(an3>=10 && an3<=26)
+            {
+                char firsttwochar=(char)('a'+an3-1);
+                smallans1=getCode(input.substring(2));
+        		for(int i=0;i<smallans1.length;i++)
+                {
+             		smallans1[i]=firsttwochar+smallans1[i];}
+        		}
         }
-        if(n == 4){
-            return "d";
+        String output[]=new String[smallans.length+smallans1.length];
+        int k=0;
+        for(int i=0;i<smallans.length;i++)
+        {
+            output[k]=smallans[i];
+            k++;
         }
-        if(n == 5){
-            return "e";
+        for(int i=0;i<smallans1.length;i++)
+        {
+            output[k]=smallans1[i];
+            k++;
         }
-        if(n == 6){
-            return "f";
-        }
-        if(n == 7){
-            return "g";
-        }
-        if(n == 8){
-            return "h";
-        }
-        if(n == 9){
-            return "i";
-        }
-        if(n == 10){
-            return "j";
-        }
-        if(n == 11){
-            return "k";
-        }
-        if(n == 12){
-            return "l";
-        }
-        if(n == 13){
-            return "m";
-        }
-        if(n == 14){
-            return "n";
-        }
-        if(n == 15){
-            return "o";
-        }
-        if(n == 16){
-            return "p";
-        }
-        if(n == 17){
-            return "q";
-        }
-        if(n == 18){
-            return "r";
-        }
-        if(n == 19){
-            return "s";
-        }
-        if(n == 20){
-            return "t";
-        }
-        if(n == 21){
-            return "u";
-        }
-        if(n == 22){
-            return "v";
-        }
-        if(n == 23){
-            return "w";
-        }
-        if(n == 24){
-            return "x";
-        }
-        if(n == 25){
-            return "y";
-        }
-        if(n == 26){
-            return "z";
-        }
-        else{
-            return "";
-        }
-    }
-    
+    	return output;
+	}
 }
