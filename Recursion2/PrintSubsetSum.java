@@ -30,7 +30,7 @@ public class PrintSubsetSum {
 		if(startindex == input.length){
 			if(k == 0 ){
 				for(int i = 0; i < output.length; i++){
-					System.out.print(output[i] + " ");
+					System.out.print	(output[i] + " ");
 				}
 				System.out.println();
 				return;
