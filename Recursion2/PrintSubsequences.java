@@ -9,9 +9,7 @@ public class PrintSubsequences {
     }
     private static void printSubsequences(String input, String outSoFar) {
         if(input.isEmpty()){
-            count = count+1;
             System.out.println(outSoFar);
-            System.out.println(count);
             return;
         }
         printSubsequences(input.substring(1), outSoFar);
