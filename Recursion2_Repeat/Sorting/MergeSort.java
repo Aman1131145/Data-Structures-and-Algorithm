@@ -1,4 +1,4 @@
-package Recursion2.Sorting;
+package Recursion2_Repeat.Sorting;
 
 import java.util.Scanner;
 
