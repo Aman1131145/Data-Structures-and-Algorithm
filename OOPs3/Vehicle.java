@@ -1,17 +1,16 @@
 package OOPs3;
 
-public abstract class Vehicle {
+import OOPs3.Generics.PrintInterface;
+
+public final class Vehicle implements PrintInterface {
+    
     protected String color;
     private int maxSpeed;
 
     public Vehicle(int maxSpeed){
         this.maxSpeed = maxSpeed;
-        System.out.println("Vehicle Constructor");
+        // System.out.println("Vehicle Constructor");
     }
-
-    public abstract boolean isMotarized();
-
-    public abstract String getCompany();
     
     public int getMaxSpeed() {
         return maxSpeed;
@@ -21,7 +20,7 @@ public abstract class Vehicle {
         this.maxSpeed = maxSpeed;
     }
 
-    public void print(){
+    public final void print(){
         System.out.println("Vehicle Speed : " + maxSpeed);
         System.out.println("Vehicle Colour : " + color );
     }    
