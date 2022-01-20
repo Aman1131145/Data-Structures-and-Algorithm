@@ -1,9 +1,9 @@
-package OOPs3;
+// package OOPs3;
 
-public class BMW extends Car{
+// public class BMW extends Car{
 
-    @Override
-    public String getCompany() {
-        return "BMW";
-    }    
-}
+//     @Override
+//     public String getCompany() {
+//         return "BMW";
+//     }    
+// }
