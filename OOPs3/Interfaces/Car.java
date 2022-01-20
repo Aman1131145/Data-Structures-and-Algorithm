@@ -1,18 +1,20 @@
 package OOPs3.Interfaces;
 
-public class Car extends Vehicle implements CarInterface {
-    @Override
-    public void print() {
-        super.print();
-    }
+public class Car implements CarInterface {
 
+    
     @Override
     public int getMaxSpeed() {
-        return super.getMaxSpeed();
+        return getMaxSpeed();
     }
     
     @Override
     public String getCompany() {
         return null;
+    }
+
+    @Override
+    public void print() {
+
     }
 }
