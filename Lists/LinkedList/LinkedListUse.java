@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class LinkedListUse
 {
-
-    
     public static Node<Integer> takeInput()
     {
         Scanner s = new Scanner(System.in);
