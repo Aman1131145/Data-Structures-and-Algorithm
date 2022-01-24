@@ -12,12 +12,10 @@ class LinkedListNode<T> {
         this.data = data;
     }
 }
-
 /**
  * PrintIthNode
  */
 public class PrintIthNode {
-
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
     public static LinkedListNode<Integer> takeInput() throws IOException {
@@ -39,7 +37,6 @@ public class PrintIthNode {
             }
             i += 1;
         }
-
         return head;
     }
     
@@ -53,9 +50,7 @@ public class PrintIthNode {
     
     public static void main(String[] args) throws NumberFormatException, IOException {
         int t = Integer.parseInt(br.readLine().trim());
-
-        while (t > 0) {
-            
+        while (t > 0) {   
             LinkedListNode<Integer> head = takeInput(); 
             int i = Integer.parseInt(br.readLine().trim());   
             PrintIthNode.printIthNode(head, i);
@@ -65,14 +60,10 @@ public class PrintIthNode {
     }
 
     public static void printIthNode(LinkedListNode<Integer> head, int i) {
-        
         for(int j=0; j<i && head != null; j++) {
-            
             head = head.next;
         }
-        
-        if(head != null) {
-            
+        if(head != null) {   
             System.out.print(head.data);
         }
     }
