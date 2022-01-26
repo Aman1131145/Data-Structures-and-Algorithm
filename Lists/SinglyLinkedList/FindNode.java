@@ -4,18 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+class Find<T> {
+    T data;
+    Find<T> next;
+    
+    public Find(T data) {
+        this.data = data;
+    }
+}
+
 public class FindNode {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException {
-        LinkedListNode<Integer> head = null, tail = null;
+    public static Find<Integer> takeInput() throws IOException {
+        Find<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            Find<Integer> newNode = new Find<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -31,7 +40,7 @@ public class FindNode {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head) {
+    public static void print(Find<Integer> head) {
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -45,7 +54,7 @@ public class FindNode {
 
         while (t > 0) {
 
-            LinkedListNode<Integer> head = takeInput(); 
+            Find<Integer> head = takeInput(); 
             int n = Integer.parseInt(br.readLine().trim());
             
             System.out.println(FindNode.findNode(head, n));
@@ -55,7 +64,7 @@ public class FindNode {
         
     }
 
-    public static int findNode(LinkedListNode<Integer> head, int n) {
+    public static int findNode(Find<Integer> head, int n) {
         if(head == null){
             return -1;
         }
