@@ -7,26 +7,26 @@ import java.io.InputStreamReader;
 /**
  * AppendLastNToFirst
  */
-class LinkedListNode<T> {
+class Append<T> {
     T data;
-    LinkedListNode<T> next;
+    Append<T> next;
     
-    public LinkedListNode(T data) {
+    public Append(T data) {
         this.data = data;
     }
 }
 public class AppendLastNToFirst {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException {
-        LinkedListNode<Integer> head = null, tail = null;
+    public static Append<Integer> takeInput() throws IOException {
+        Append<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while (i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            Append<Integer> newNode = new Append<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -41,7 +41,7 @@ public class AppendLastNToFirst {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head){
+    public static void print(Append<Integer> head){
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -55,7 +55,7 @@ public class AppendLastNToFirst {
 
         while (t > 0) {
             
-            LinkedListNode<Integer> head = takeInput(); 
+            Append<Integer> head = takeInput(); 
 
             int n = Integer.parseInt(br.readLine().trim());
             head = AppendLastNToFirst.appendLastNToFirst(head, n);
@@ -66,8 +66,8 @@ public class AppendLastNToFirst {
         
     }
 
-    public static LinkedListNode<Integer> appendLastNToFirst(LinkedListNode<Integer> head, int n) {
-        LinkedListNode<Integer> temp = head,tail = null,newHead = null;
+    public static Append<Integer> appendLastNToFirst(Append<Integer> head, int n) {
+        Append<Integer> temp = head,tail = null,newHead = null;
         int length = 0;
         if(head == null){
             return head;
