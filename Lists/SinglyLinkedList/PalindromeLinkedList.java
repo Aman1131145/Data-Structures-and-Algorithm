@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class LinkedListNode<T> {
+class LinkedListNodePalindrome<T> {
     T data;
-    LinkedListNode<T> next;
+    LinkedListNodePalindrome<T> next;
     
-    public LinkedListNode(T data) {
+    public LinkedListNodePalindrome(T data) {
         this.data = data;
     }
 }
@@ -16,15 +16,15 @@ class LinkedListNode<T> {
 public class PalindromeLinkedList {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException{
-        LinkedListNode<Integer> head = null, tail = null;
+    public static LinkedListNodePalindrome<Integer> takeInput() throws IOException{
+        LinkedListNodePalindrome<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            LinkedListNodePalindrome<Integer> newNode = new LinkedListNodePalindrome<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -39,7 +39,7 @@ public class PalindromeLinkedList {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head){
+    public static void print(LinkedListNodePalindrome<Integer> head){
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -53,7 +53,7 @@ public class PalindromeLinkedList {
 
         while (t > 0) {
 
-            LinkedListNode<Integer> head = takeInput(); 
+            LinkedListNodePalindrome<Integer> head = takeInput(); 
 
             boolean ans = PalindromeLinkedList.isPalindrome(head);
             System.out.println(ans);
@@ -64,7 +64,7 @@ public class PalindromeLinkedList {
         
     }
 
-    public static boolean isPalindrome(LinkedListNode<Integer> head) {
+    public static boolean isPalindrome(LinkedListNodePalindrome<Integer> head) {
         /**
          * here we just checked if the list is empty
          * or if it have only one element
@@ -80,7 +80,7 @@ public class PalindromeLinkedList {
          * temp is equal to head
          * and mid and h2 are equal to null
          */
-        LinkedListNode<Integer> temp = head,mid,h2;//temp = head, mid = null, h2 = null;
+        LinkedListNodePalindrome<Integer> temp = head,mid,h2;//temp = head, mid = null, h2 = null;
         //here we get the mid point of the temp
         mid=midPoint(temp);
         //then we will point h2 to mid.next
@@ -121,12 +121,12 @@ public class PalindromeLinkedList {
      * @param head
      * @return
      */
-    private static LinkedListNode<Integer> reverseIt(LinkedListNode<Integer> head){   
+    private static LinkedListNodePalindrome<Integer> reverseIt(LinkedListNodePalindrome<Integer> head){   
         if(head==null || head.next==null){
         	return head;
         }
-     	LinkedListNode<Integer> tail=head.next;
-     	LinkedListNode<Integer> ans=reverseIt(head.next);
+     	LinkedListNodePalindrome<Integer> tail=head.next;
+     	LinkedListNodePalindrome<Integer> ans=reverseIt(head.next);
      	tail.next=head;
      	head.next=null;
      	return ans;
@@ -144,8 +144,8 @@ public class PalindromeLinkedList {
      * @param head
      * @return
      */
-    private static LinkedListNode<Integer> midPoint(LinkedListNode<Integer> head){
-        LinkedListNode<Integer> slow=head,fast=head;
+    private static LinkedListNodePalindrome<Integer> midPoint(LinkedListNodePalindrome<Integer> head){
+        LinkedListNodePalindrome<Integer> slow=head,fast=head;
         while(fast.next!=null && fast.next.next!=null)
         {
             fast=fast.next.next;
