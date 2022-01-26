@@ -35,7 +35,7 @@ public class PalindromeLinkedList {
             }
             i += 1;
         }
-
+        
         return head;
     }
     
