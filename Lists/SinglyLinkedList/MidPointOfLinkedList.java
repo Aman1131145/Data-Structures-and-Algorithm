@@ -3,20 +3,28 @@ package Lists.SinglyLinkedList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+class Mid<T> {
+    T data;
+    Mid<T> next;
+    
+    public Mid(T data) {
+        this.data = data;
+    }
+}
 
 public class MidPointOfLinkedList {
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException {
-        LinkedListNode<Integer> head = null, tail = null;
+    public static Mid<Integer> takeInput() throws IOException {
+        Mid<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            Mid<Integer> newNode = new Mid<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -31,7 +39,7 @@ public class MidPointOfLinkedList {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head){
+    public static void print(Mid<Integer> head){
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -46,9 +54,9 @@ public class MidPointOfLinkedList {
 
         while (t > 0) {
 
-            LinkedListNode<Integer> head = takeInput(); 
+            Mid<Integer> head = takeInput(); 
 
-            LinkedListNode<Integer> mid = MidPointOfLinkedList.midPoint(head);
+            Mid<Integer> mid = MidPointOfLinkedList.midPoint(head);
             
             if (mid != null) {
                 System.out.println(mid.data);
@@ -59,9 +67,9 @@ public class MidPointOfLinkedList {
 
     }
 
-    public static LinkedListNode<Integer> midPoint(LinkedListNode<Integer> head) {
+    public static Mid<Integer> midPoint(Mid<Integer> head) {
         
-        LinkedListNode<Integer> slow = head,fast = head;
+        Mid<Integer> slow = head,fast = head;
         if(head == null || head.next == null){
             return head;
         }
