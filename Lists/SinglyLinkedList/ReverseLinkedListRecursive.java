@@ -56,13 +56,28 @@ public class ReverseLinkedListRecursive {
         while (t > 0) {
             
             ReverseR<Integer> head = takeInput();
-            ReverseR<Integer> newHead = ReverseLinkedListRecursive.reverseLinkedListRec(head);
+            ReverseR<Integer> newHead = ReverseLinkedListRecursive.reverseR(head);
             print(newHead);
             
             t -= 1;
         }
 
     }
+    public static ReverseR<Integer> reverseR(ReverseR<Integer> head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+
+        ReverseR<Integer> finalhead = reverseR(head.next);
+        ReverseR<Integer> temp = finalhead; 
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = head;
+        head.next = null;
+        return finalhead;
+    }
+
     public static ReverseR<Integer> reverseLinkedListRec(ReverseR<Integer> head) {
         if(head==null)
             return head;
@@ -74,5 +89,6 @@ public class ReverseLinkedListRecursive {
         head.next=null;
         return smallhead;
 	}
+    
 
 }
