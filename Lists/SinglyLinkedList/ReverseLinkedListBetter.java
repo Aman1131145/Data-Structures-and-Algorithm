@@ -12,6 +12,12 @@ class ReverseB<T> {
         this.data = data;
     }
 }
+class DoubleNode {
+
+    ReverseB<Integer> head;
+    ReverseB<Integer> tail;
+
+}
 
 public class ReverseLinkedListBetter {
 
