@@ -12,7 +12,7 @@ class ReverseB<T> {
         this.data = data;
     }
 }
-class DoubleNode {
+class ReverseBetterDoubleNode {
 
     ReverseB<Integer> head;
     ReverseB<Integer> tail;
@@ -58,23 +58,23 @@ public class ReverseLinkedListBetter {
     public static void main(String[] args) throws NumberFormatException, IOException {
         
         ReverseB<Integer> head = takeInput();
-        DoubleNode ans = reverseB(head);
+        ReverseBetterDoubleNode ans = reverseB(head);
         print(ans.head);
     }
 
-    public static DoubleNode reverseB(ReverseB<Integer> head) {
+    public static ReverseBetterDoubleNode reverseB(ReverseB<Integer> head) {
         if(head == null || head.next == null){
-            DoubleNode ans = new DoubleNode();
+            ReverseBetterDoubleNode ans = new ReverseBetterDoubleNode();
             ans.head = head;
             ans.tail = head;
             return ans;
         }
 
-        DoubleNode smallAns = reverseB(head.next);
+        ReverseBetterDoubleNode smallAns = reverseB(head.next);
         smallAns.tail.next = head;
         head.next = null;
 
-        DoubleNode ans = new DoubleNode();
+        ReverseBetterDoubleNode ans = new ReverseBetterDoubleNode();
         ans.head = smallAns.head;
         ans.tail = head;
         return ans;
