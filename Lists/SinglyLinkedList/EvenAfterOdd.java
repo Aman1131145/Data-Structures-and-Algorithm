@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class LinkedListNode<T> {
+class EAO<T> {
     T data;
-    LinkedListNode<T> next;
+    EAO<T> next;
     
-    public LinkedListNode(T data) {
+    public EAO(T data) {
         this.data = data;
     }
 }
@@ -17,15 +17,15 @@ public class EvenAfterOdd {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException {
-        LinkedListNode<Integer> head = null, tail = null;
+    public static EAO<Integer> takeInput() throws IOException {
+        EAO<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            EAO<Integer> newNode = new EAO<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -40,7 +40,7 @@ public class EvenAfterOdd {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head){
+    public static void print(EAO<Integer> head){
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -55,9 +55,9 @@ public class EvenAfterOdd {
 
         while (t > 0) {
 
-            LinkedListNode<Integer> head = takeInput(); 
+            EAO<Integer> head = takeInput(); 
 
-            LinkedListNode<Integer> newHead = EvenAfterOdd.evenAfterOdd(head);
+            EAO<Integer> newHead = EvenAfterOdd.evenAfterOdd(head);
             print(newHead);
 
             t -= 1;
@@ -65,11 +65,11 @@ public class EvenAfterOdd {
 
     }
 
-    public static LinkedListNode<Integer> evenAfterOdd(LinkedListNode<Integer> head) {
+    public static EAO<Integer> evenAfterOdd(EAO<Integer> head) {
         if(head == null || head.next == null){
             return head;
         }
-		LinkedListNode<Integer> evenhead = null,oddhead = null, oddtail = null , eventail = null;
+		EAO<Integer> evenhead = null,oddhead = null, oddtail = null , eventail = null;
         while(head != null){
             if(head.data%2 == 0){
                 if(evenhead == null){
