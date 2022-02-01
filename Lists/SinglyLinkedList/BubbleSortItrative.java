@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class LinkedListNode<T> {
+class Bubble<T> {
     T data;
-    LinkedListNode<T> next;
+    Bubble<T> next;
     
-    public LinkedListNode(T data) {
+    public Bubble(T data) {
         this.data = data;
     }
 }
@@ -17,15 +17,15 @@ public class BubbleSortItrative {
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    public static LinkedListNode<Integer> takeInput() throws IOException {
-        LinkedListNode<Integer> head = null, tail = null;
+    public static Bubble<Integer> takeInput() throws IOException {
+        Bubble<Integer> head = null, tail = null;
 
         String[] datas = br.readLine().trim().split("\\s");
 
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            Bubble<Integer> newNode = new Bubble<Integer>(data);
             if(head == null) {
                 head = newNode;
                 tail = newNode;
@@ -40,7 +40,7 @@ public class BubbleSortItrative {
         return head;
     }
     
-    public static void print(LinkedListNode<Integer> head){
+    public static void print(Bubble<Integer> head){
         while(head != null) {
             System.out.print(head.data + " ");
             head = head.next;
@@ -50,21 +50,21 @@ public class BubbleSortItrative {
     }
     
     public static void main(String[] args) throws NumberFormatException, IOException {
-    	LinkedListNode<Integer> head = takeInput(); 
+    	Bubble<Integer> head = takeInput(); 
 
     	head = BubbleSortItrative.bubbleSort(head);
     	print(head);
     }
 
-    public static LinkedListNode<Integer> bubbleSort(LinkedListNode<Integer> head )
+    public static Bubble<Integer> bubbleSort(Bubble<Integer> head )
 	{    
         if(head==null || head.next==null)
         	return head;
         //Write your code here
         for(int i=0;i<lengthLL(head)-1;i++){
-            LinkedListNode<Integer> prev = null;
-            LinkedListNode<Integer> curr = head;
-            LinkedListNode<Integer> next = curr.next;
+            Bubble<Integer> prev = null;
+            Bubble<Integer> curr = head;
+            Bubble<Integer> next = curr.next;
 
             while(curr.next != null){
                 if(curr.data > curr.next.data){
@@ -89,7 +89,7 @@ public class BubbleSortItrative {
         return head;
     }
     
-    private static int lengthLL(LinkedListNode<Integer> head){
+    private static int lengthLL(Bubble<Integer> head){
         int count = 1;
         while(head.next != null){
             head = head.next;
