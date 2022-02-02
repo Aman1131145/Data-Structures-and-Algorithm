@@ -9,5 +9,6 @@ public class StackNode<T> {
 
     public StackNode(T data){
         this.data = data;
+        this.next = null;
     }    
 }
