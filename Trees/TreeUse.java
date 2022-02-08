@@ -15,6 +15,7 @@ public class TreeUse {
         System.out.println();
         System.out.println("Total number of Nodes : " + numberOfNodes(root));
         System.out.println("Total sum of all the nodes : " + sumOfNodes(root));
+        System.out.println("Largest Node : " + largestNode(root));
         // TreeNode<Integer> root = new TreeNode<>(1);
         // TreeNode<Integer> node1 = new TreeNode<>(2);
         // TreeNode<Integer> node2 = new TreeNode<>(3);
@@ -27,6 +28,20 @@ public class TreeUse {
         // root.children.add(node4);
 
         // System.out.println(root);
+    }
+
+    private static int largestNode(TreeNode<Integer> root) {
+        if(root == null){
+            return Integer.MIN_VALUE;
+        }
+        int largest = root.data;
+        for (int i = 0; i < root.children.size(); i++) {
+            int largestInChild = largestNode(root.children.get(i));
+            if(largestInChild > largest){
+                largest = largestInChild;
+            }
+        }
+        return largest;
     }
 
     private static void printLevelWise(TreeNode<Integer> root) {
