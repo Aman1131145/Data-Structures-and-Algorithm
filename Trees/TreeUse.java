@@ -9,9 +9,9 @@ import javax.print.attribute.standard.PrinterMessageFromOperator;
 
 public class TreeUse {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter the depth : ");
-        int k = s.nextInt();
+        // Scanner s = new Scanner(System.in);
+        // System.out.println("Enter the depth : ");
+        // int k = s.nextInt();
         
         // TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
@@ -20,7 +20,10 @@ public class TreeUse {
         System.out.println("Total number of Nodes : " + numberOfNodes(root));
         System.out.println("Total sum of all the nodes : " + sumOfNodes(root));
         System.out.println("Largest Node : " + largestNode(root));
-        printAtK(root, k);
+        // printAtK(root, k);
+        preorder(root);
+        System.out.println();
+        postorder(root);
         // TreeNode<Integer> root = new TreeNode<>(1);
         // TreeNode<Integer> node1 = new TreeNode<>(2);
         // TreeNode<Integer> node2 = new TreeNode<>(3);
@@ -34,6 +37,27 @@ public class TreeUse {
 
         // System.out.println(root);
     }
+
+    public static void preorder(TreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.data + " ");
+        for (int i = 0; i < root.children.size(); i++) {
+            preorder(root.children.get(i));
+        }
+    }
+
+    public static void postorder(TreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+        for (int i = 0; i < root.children.size(); i++) {
+            postorder(root.children.get(i));
+        }
+        System.out.print(root.data + " ");
+    }
+
     public static void printAtK(TreeNode<Integer> root, int k){
         if(k < 0){
             return;
