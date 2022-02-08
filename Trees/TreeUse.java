@@ -4,10 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+import javax.print.attribute.standard.PrinterMessageFromOperator;
+
 
 public class TreeUse {
     public static void main(String[] args) {
-        // Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the depth : ");
+        int k = s.nextInt();
         
         // TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
@@ -16,6 +20,7 @@ public class TreeUse {
         System.out.println("Total number of Nodes : " + numberOfNodes(root));
         System.out.println("Total sum of all the nodes : " + sumOfNodes(root));
         System.out.println("Largest Node : " + largestNode(root));
+        printAtK(root, k);
         // TreeNode<Integer> root = new TreeNode<>(1);
         // TreeNode<Integer> node1 = new TreeNode<>(2);
         // TreeNode<Integer> node2 = new TreeNode<>(3);
@@ -28,6 +33,18 @@ public class TreeUse {
         // root.children.add(node4);
 
         // System.out.println(root);
+    }
+    public static void printAtK(TreeNode<Integer> root, int k){
+        if(k < 0){
+            return;
+        }
+        if(k == 0){
+            System.out.print(root.data + " ");
+            return;
+        }
+        for(int i = 0; i < root.children.size(); i++){
+            printAtK(root.children.get(i), k-1);
+        }
     }
 
     private static int largestNode(TreeNode<Integer> root) {
