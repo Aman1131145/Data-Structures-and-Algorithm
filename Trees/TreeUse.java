@@ -12,6 +12,9 @@ public class TreeUse {
         // TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
         printLevelWise(root);
+        System.out.println();
+        System.out.println("Total number of Nodes : " + numberOfNodes(root));
+        System.out.println("Total sum of all the nodes : " + sumOfNodes(root));
         // TreeNode<Integer> root = new TreeNode<>(1);
         // TreeNode<Integer> node1 = new TreeNode<>(2);
         // TreeNode<Integer> node2 = new TreeNode<>(3);
@@ -49,6 +52,29 @@ public class TreeUse {
             }
             
         }
+    }
+
+    public static int numberOfNodes(TreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int count = 1;
+        for (int i = 0; i < root.children.size(); i++) {
+            count += numberOfNodes(root.children.get(i));            
+        }
+        return count;
+    }
+
+    public static int sumOfNodes(TreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int sum = root.data;
+        for (int i = 0; i < root.children.size(); i++) {
+            int childSum = sumOfNodes(root.children.get(i));
+            sum += childSum;
+        }
+        return sum;
     }
 
     // private static void print(TreeNode<Integer> root){
