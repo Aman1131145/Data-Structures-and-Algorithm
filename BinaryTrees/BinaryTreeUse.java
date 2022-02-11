@@ -110,7 +110,21 @@ public class BinaryTreeUse {
         return isPresent;
 	}
 
-    
+    static int count = 1;
+	public static int height(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+        if(root == null){
+            return 0;
+        }
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        if(leftHeight > rightHeight){
+            count = leftHeight + 1;
+        }else{
+            count = rightHeight + 1;
+        }
+        return count;
+	}
     // private static BinaryTreeNode<Integer> takeInput(Scanner s) {
     //     int rootData;
     //     System.out.println("Enter root data");
