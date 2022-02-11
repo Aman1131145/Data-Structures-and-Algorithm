@@ -16,6 +16,7 @@ public class BinaryTreeUse {
         System.out.println(isNodePresent(root, x));
         System.out.println("Height of the tree is : " + height(root));
         System.out.println("And here is the mirror tree");
+        System.out.println("Diameter of the tree : " + diameter(root));
         mirrorBinaryTree(root);
         printLevelWise(root);
         // s.close();
@@ -120,7 +121,6 @@ public class BinaryTreeUse {
         return isPresent;
 	}
 
-    static int count = 1;
 	public static int height(BinaryTreeNode<Integer> root) {
 		//Your code goes here
         if(root == null){
@@ -128,12 +128,7 @@ public class BinaryTreeUse {
         }
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
-        if(leftHeight > rightHeight){
-            count = leftHeight + 1;
-        }else{
-            count = rightHeight + 1;
-        }
-        return count;
+        return 1 + Math.max(leftHeight, rightHeight);
 	}
 
     public static void mirrorBinaryTree(BinaryTreeNode<Integer> root){
@@ -147,6 +142,16 @@ public class BinaryTreeUse {
         mirrorBinaryTree(root.left);
 		mirrorBinaryTree(root.right);
 	}
+
+    public static int diameter(BinaryTreeNode<Integer> root){
+        if (root == null){
+            return 0;
+        }
+        int option1 = height(root.left) + height(root.right);
+        int option2 = diameter(root.left);
+        int option3 = diameter(root.left);
+        return Math.max(option1 , Math.max(option2, option3));
+    }
     // private static BinaryTreeNode<Integer> takeInput(Scanner s) {
     //     int rootData;
     //     System.out.println("Enter root data");
