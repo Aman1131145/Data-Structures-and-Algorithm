@@ -4,17 +4,27 @@ import java.util.*;
 
 public class BinaryTreeUse {
     public static void main(String[] args) {
-        // Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         // BinaryTreeNode<Integer> root = takeInput(s);
+        System.out.print("Enter the Number you want to find in the tree : ");
+        System.out.println();
+        int x = s.nextInt();
         BinaryTreeNode<Integer> root = takeInputLevelWise();
         printLevelWise(root);
         System.out.println("Number of Nodes in this tree : " + countNodes(root));
+        
+        System.out.println(isNodePresent(root, x));
+        System.out.println("Height of the tree is : " + height(root));
+        System.out.println("And here is the mirror tree");
+        mirrorBinaryTree(root);
+        printLevelWise(root);
         // s.close();
         // BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
         // BinaryTreeNode<Integer> node1 = new BinaryTreeNode<Integer>(2);
         // root.left = node1;
         // BinaryTreeNode<Integer> node2 = new BinaryTreeNode<Integer>(3);
         // root.right = node2;
+        s.close();
     }
     
     public static BinaryTreeNode<Integer> takeInputLevelWise(){
