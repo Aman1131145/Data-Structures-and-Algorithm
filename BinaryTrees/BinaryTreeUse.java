@@ -95,6 +95,22 @@ public class BinaryTreeUse {
         ans += countNodes(root.right);
         return ans;
     }
+
+    static boolean isPresent;
+	public static boolean isNodePresent(BinaryTreeNode<Integer> root, int x) {
+	    //Your code goes here
+        if(root == null){
+            return false;
+        }
+        if(root.data == x){
+            return isPresent = true;
+        }
+        isNodePresent(root.left,x);
+        isNodePresent(root.right,x);
+        return isPresent;
+	}
+
+    
     // private static BinaryTreeNode<Integer> takeInput(Scanner s) {
     //     int rootData;
     //     System.out.println("Enter root data");
