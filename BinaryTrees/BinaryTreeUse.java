@@ -16,6 +16,15 @@ public class BinaryTreeUse {
         System.out.println(isNodePresent(root, x));
         System.out.println("Height of the tree is : " + heightDiameter(root).first);
         System.out.println("Diameter of the tree : " + heightDiameter(root).second);
+        System.out.print("Preorder : ");
+        preorder(root);
+        System.out.println();
+        System.out.println("PostOrder : ");
+        postorder(root);
+        System.out.println();
+        System.out.println("Inorder : ");
+        inorder(root);
+        System.out.println();
         System.out.println("And here is the mirror tree");
         mirrorBinaryTree(root);
         printLevelWise(root);
@@ -120,8 +129,7 @@ public class BinaryTreeUse {
         isNodePresent(root.right,x);
         return isPresent;
 	}
-
-    
+   
     public static Pair<Integer, Integer> heightDiameter(BinaryTreeNode<Integer> root){
         if(root == null){
             Pair<Integer,Integer> output = new Pair<>();
@@ -154,7 +162,31 @@ public class BinaryTreeUse {
 		mirrorBinaryTree(root.right);
 	}
     
-    // public static int height(BinaryTreeNode<Integer> root) {
+    public static void inorder(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return ;
+        }
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+    public static void preorder(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return ;
+        }
+        System.out.print(root.data + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+    public static void postorder(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return ;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data + " ");
+    }
+    /*// public static int height(BinaryTreeNode<Integer> root) {
     //     //Your code goes here
     //     if(root == null){
     //         return 0;
@@ -201,4 +233,5 @@ public class BinaryTreeUse {
     //     printTree(root.left);
     //     printTree(root.right);
     // }
+    */
 }
