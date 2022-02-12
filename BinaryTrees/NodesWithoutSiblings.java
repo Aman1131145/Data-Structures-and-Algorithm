@@ -3,24 +3,12 @@ package BinaryTrees;
 import java.io.*;
 import java.util.*;
 
-class BinaryTreeBinaryTreeNode<T> {
-	T data;
-	BinaryTreeBinaryTreeNode<T> left;
-	BinaryTreeBinaryTreeNode<T> right;
-
-	public BinaryTreeBinaryTreeNode(T data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-}
-
 public class NodesWithoutSiblings {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	public static BinaryTreeBinaryTreeNode<Integer> takeInput() throws NumberFormatException, IOException {
-		Queue<BinaryTreeBinaryTreeNode<Integer>>  pendingBinaryTreeNodes = new LinkedList<BinaryTreeBinaryTreeNode<Integer>>(); 
+	public static BinaryTreeNode<Integer> takeInput() throws NumberFormatException, IOException {
+		Queue<BinaryTreeNode<Integer>>  pendingBinaryTreeNodes = new LinkedList<BinaryTreeNode<Integer>>(); 
 		int start = 0;
 
 		String[] BinaryTreeNodeDatas = br.readLine().trim().split(" ");
@@ -32,11 +20,11 @@ public class NodesWithoutSiblings {
 		int rootData = Integer.parseInt(BinaryTreeNodeDatas[start]);
 		start += 1;
 
-		BinaryTreeBinaryTreeNode<Integer> root = new BinaryTreeBinaryTreeNode<Integer>(rootData);
+		BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(rootData);
 		pendingBinaryTreeNodes.add(root);
 
 		while(!pendingBinaryTreeNodes.isEmpty()){
-			BinaryTreeBinaryTreeNode<Integer> currentBinaryTreeNode;
+			BinaryTreeNode<Integer> currentBinaryTreeNode;
 			try {
 				currentBinaryTreeNode = pendingBinaryTreeNodes.remove();
 			} catch (Exception e) {
@@ -47,7 +35,7 @@ public class NodesWithoutSiblings {
 			start += 1;
 
 			if(leftChildData != -1){
-				BinaryTreeBinaryTreeNode<Integer> leftChild = new BinaryTreeBinaryTreeNode<Integer>(leftChildData);
+				BinaryTreeNode<Integer> leftChild = new BinaryTreeNode<Integer>(leftChildData);
 				currentBinaryTreeNode.left = leftChild;
 				pendingBinaryTreeNodes.add(leftChild);
 			}
@@ -56,7 +44,7 @@ public class NodesWithoutSiblings {
 			start += 1;
 
 			if(rightChildData != -1){
-				BinaryTreeBinaryTreeNode<Integer> rightChild = new BinaryTreeBinaryTreeNode<Integer>(rightChildData);
+				BinaryTreeNode<Integer> rightChild = new BinaryTreeNode<Integer>(rightChildData);
 				currentBinaryTreeNode.right = rightChild;
 				pendingBinaryTreeNodes.remove(rightChild);
 			}
@@ -66,13 +54,13 @@ public class NodesWithoutSiblings {
 	}
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		BinaryTreeBinaryTreeNode<Integer> root = takeInput();
+		BinaryTreeNode<Integer> root = takeInput();
 
 		NodesWithoutSiblings.printBinaryTreeNodesWithoutSibling(root);
 		
 	}
 
-    public static void printBinaryTreeNodesWithoutSibling(BinaryTreeBinaryTreeNode<Integer> root) {
+    public static void printBinaryTreeNodesWithoutSibling(BinaryTreeNode<Integer> root) {
 		//Your code goes here
         if(root == null){
             return;
