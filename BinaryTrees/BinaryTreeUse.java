@@ -2,6 +2,11 @@ package BinaryTrees;
 
 import java.util.*;
 
+class pair<T,V> {
+    public T first;
+    public V second;
+}
+
 public class BinaryTreeUse {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -130,20 +135,21 @@ public class BinaryTreeUse {
         return isPresent;
 	}
    
-    public static Pair<Integer, Integer> heightDiameter(BinaryTreeNode<Integer> root){
+    public static pair<Integer, Integer> heightDiameter(BinaryTreeNode<Integer> root){
         if(root == null){
-            Pair<Integer,Integer> output = new Pair<>();
+            pair<Integer,Integer> output = new pair<>();
             output.first = 0;
             output.second = 0;
             return output;
         }
-        Pair<Integer,Integer> lo = heightDiameter(root.left),ro = heightDiameter(root.right);
+        pair<Integer,Integer> lo = heightDiameter(root.left);
+        pair<Integer,Integer> ro = heightDiameter(root.right);
         int height = 1 + Math.max(lo.first, ro.first);
         int option1 = lo.first + ro.first;
         int option2 = lo.second;
         int option3 = ro.second;
         int diameter = Math.max(option1, Math.max(option2, option3));
-        Pair<Integer,Integer> output = new Pair<>();
+        pair<Integer,Integer> output = new pair<>();
         output.first = height;
         output.second = diameter;
         return output;
@@ -170,6 +176,7 @@ public class BinaryTreeUse {
         System.out.print(root.data + " ");
         inorder(root.right);
     }
+
     public static void preorder(BinaryTreeNode<Integer> root){
         if(root == null){
             return ;
@@ -178,6 +185,7 @@ public class BinaryTreeUse {
         preorder(root.left);
         preorder(root.right);
     }
+    
     public static void postorder(BinaryTreeNode<Integer> root){
         if(root == null){
             return ;
