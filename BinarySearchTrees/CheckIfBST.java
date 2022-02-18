@@ -61,6 +61,7 @@ public class CheckIfBST {
         System.out.println(ans);
 
 	}
+	
     public static int maximumLeft(BinaryTreeNode<Integer> root){
         if(root == null){
             return Integer.MIN_VALUE;
@@ -68,7 +69,6 @@ public class CheckIfBST {
         return Math.max(root.data , Math.max(maximumLeft(root.left) ,maximumLeft(root.right)));
     }
     
-
     public static int minimumRight(BinaryTreeNode<Integer> root){
         if(root == null){
             return Integer.MAX_VALUE;
