@@ -69,7 +69,7 @@ public class CheckIfBSTBetter {
  
     public static pair<Boolean, pair<Integer,Integer>> isBSTBetter(BinaryTreeNode<Integer> root){
         if(root == null){
-            pair<Boolean,pair<Integer,Integer>> output = new pair<Boolean , pair<Integer,Integer>>();
+            pair<Boolean,pair<Integer,Integer>> output = new pair<>();
             output.first = true;
             output.second = new pair<>();
             output.second.first = Integer.MAX_VALUE;
