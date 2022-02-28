@@ -12,7 +12,6 @@ class BinaryTreeNode<T> {
 	}
 }
 public class CheckCousins {
-
     static Scanner s = new Scanner(System.in);
 
 	public static BinaryTreeNode<Integer> takeInput(){
@@ -51,42 +50,37 @@ public class CheckCousins {
 		System.out.println(CheckCousins.isCousin(root, p, q));
 	}
 
-    public static boolean isCousin(BinaryTreeNode<Integer> root, int node1, int node2) {
-		return !isSiblings(root, node1, node2) && level(root, 0, node1) == level(root, 0, node2);
+    public static boolean isCousin(BinaryTreeNode<Integer> root, int p, int q) {
+		return !helper(root, p, q) && level(root, 0, p) == level(root, 0, q);
 	}
-	public static boolean isSiblings(BinaryTreeNode<Integer> root,int node1,int node2) {
 
+	public static boolean helper(BinaryTreeNode<Integer> root,int p,int q) {
 		if(root==null) {
 			return false;
 		}
 		if(root.left!=null && root.right!=null) {
 			
-			if(root.left.data == node1 && root.right.data == node2) {
+			if(root.left.data == p && root.right.data == q) {
 				return true;
 			}
-			
 		}
-		return isSiblings(root.left, node1, node2) || isSiblings(root.right, node1, node2);
-		
+		return helper(root.left, p, q) || helper(root.right, p, q);
 	}
-	public static int level(BinaryTreeNode<Integer> root,int k,int node1) {
-
+	
+	public static int level(BinaryTreeNode<Integer> root,int k,int p) {
 		if(root==null)
 			return -1;
-		if(root.data == node1) {
+		if(root.data == p) {
 			return k;
 		}
-		int left  = level(root.left, k+1, node1);
-		int right = level(root.right, k+1, node1);
+		int left  = level(root.left, k+1, p);
+		int right = level(root.right, k+1, p);
 		if(left==-1) {
 			return right;
 		}
 		if(right==-1) {
 			return left;
 		}
-		
 		return -1;
-		
 	}
-    
 }
