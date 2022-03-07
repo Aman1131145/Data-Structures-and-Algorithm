@@ -31,8 +31,43 @@ public class Map<K,V> {
             head = head.next;
         }
         head = buckets.get(BucketIndex);
-        MapNode<K,V> newElementNdoe = new MapNode<>(key, value);
-        newElementNdoe = head;
-        buckets.set(BucketIndex, newElementNdoe);
+        MapNode<K,V> newElementNode = new MapNode<>(key, value);
+        newElementNode = head;
+        buckets.set(BucketIndex, newElementNode);
+    }
+    
+    public V getValue(K key){
+        int BucketIndex = getBucketIndex(key);
+        MapNode<K,V> head = buckets.get(BucketIndex);
+        while(head != null){
+            if(head.key.equals(key)){
+                return head.value;
+            }
+            head = head.next;
+        }
+        return null;
+    }
+    
+    public V removeKey(K key){
+        int BucketIndex = getBucketIndex(key);
+        MapNode<K,V> head = buckets.get(BucketIndex);
+        MapNode<K,V> prev = null;
+        while(head != null){
+            if(head.key.equals(key)){
+                if(prev == null){
+                    buckets.set(BucketIndex,head.next); 
+                }else{
+                    prev.next = head.next;
+                }
+                return head.value;
+            }
+            prev = head;
+            head = head.next;
+        }
+        return null;
+    }
+
+    public int size(){
+        return size;
     }
 }
