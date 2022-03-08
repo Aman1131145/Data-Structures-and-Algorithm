@@ -10,7 +10,7 @@ public class Map<K,V> {
     public Map(){
         numBuckets = 5;
         buckets = new ArrayList<>();
-        for(int i = 0;i < 5; i++){
+        for(int i = 0;i < numBuckets; i++){
             buckets.add(null);
         }
     }
@@ -50,9 +50,8 @@ public class Map<K,V> {
         }
         size = 0;
         numBuckets *= 2;
-
-        for (int j = 0; j < temp.size(); j++) {
-            MapNode<K,V> head = temp.get(j);
+        for (int i = 0; i < temp.size(); i++) {
+            MapNode<K,V> head = temp.get(i);
             while(head != null){
                 K key = head.key;
                 V value = head.value;
@@ -86,7 +85,7 @@ public class Map<K,V> {
             if(head.key.equals(key)){
                 size--;
                 if(prev == null){
-                    buckets.set(bucketIndex,head.next); 
+                    buckets.set(bucketIndex,head.next);
                 }else{
                     prev.next = head.next;
                 }
