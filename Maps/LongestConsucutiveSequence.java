@@ -59,7 +59,7 @@ public class LongestConsucutiveSequence {
         int start  = 0;
         
         for(int i=0;i<arr.length;i++){
-            if(map.get(arr[i])){
+            if(map.containsKey(arr[i])){
                 int length = 0;
                 int temp = arr[i];
                 while(map.containsKey(temp)){
