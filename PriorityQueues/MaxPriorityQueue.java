@@ -71,14 +71,14 @@ public class MaxPriorityQueue {
 		return temp;
 	}
 	public void upHeapify() {
-		int childIndex = heap.size()-1;
-		while(childIndex>0) {
-			int parentIndex = (childIndex - 1) /2;
-			if(heap.get(parentIndex) < heap.get(childIndex) ) {
-				int temp = heap.get(childIndex);
-				heap.set(childIndex, heap.get(parentIndex));
-				heap.set(parentIndex,temp);
-				childIndex = parentIndex;
+		int cI = heap.size()-1;
+		while(cI>0) {
+			int i = (cI - 1) /2;
+			if(heap.get(i) < heap.get(cI) ) {
+				int temp = heap.get(cI);
+				heap.set(cI, heap.get(i));
+				heap.set(i,temp);
+				cI = i;
 			}
 			else {
 				break;
@@ -88,26 +88,26 @@ public class MaxPriorityQueue {
 	}
 	public void downHeapify() {
 		
-		int parentIndex = 0;
-		int leftChildIndex = 1;
-		int rightChildIndex = 2;
-		int maxIndex = 0;
-		while(leftChildIndex<heap.size()) {
+		int i = 0;
+		int lI = 1;
+		int rI = 2;
+		int mI = 0;
+		while(lI<heap.size()) {
 			
-			if( heap.get(leftChildIndex) >  heap.get(maxIndex) ) {
-				maxIndex = leftChildIndex;
+			if( heap.get(lI) >  heap.get(mI) ) {
+				mI = lI;
 			}
-			if( rightChildIndex<heap.size() && heap.get(rightChildIndex) > heap.get(maxIndex) ) {
-				maxIndex = rightChildIndex;
+			if( rI<heap.size() && heap.get(rI) > heap.get(mI) ) {
+				mI = rI;
 			}
-			if(maxIndex!=parentIndex) {
+			if(mI!=i) {
 				
-				int temp = heap.get(maxIndex);
-				heap.set(maxIndex, heap.get(parentIndex));
-				heap.set(parentIndex, temp);
-				parentIndex = maxIndex;
-				leftChildIndex = 2*parentIndex + 1;
-				rightChildIndex = 2* parentIndex + 2;	
+				int temp = heap.get(mI);
+				heap.set(mI, heap.get(i));
+				heap.set(i, temp);
+				i = mI;
+				lI = 2*i + 1;
+				rI = 2* i + 2;	
 			}
 			else {
 				break;
