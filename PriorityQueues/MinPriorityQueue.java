@@ -28,21 +28,20 @@ public class MinPriorityQueue {
 
     void insert(int element) {
 		heap.add(element);
-        upHeapify();
-// 		int cI = heap.size() - 1;
-// 		int i = (cI - 1) / 2;
+		int childIndex = heap.size() - 1;
+		int parentIndex = (childIndex - 1) / 2;
 
-// 		while (cI > 0) {
-// 			if (heap.get(cI) < heap.get(i)) {
-// 				int temp = heap.get(cI);
-// 				heap.set(cI, heap.get(i));
-// 				heap.set(i, temp);
-// 				cI = i;
-// 				i = (cI - 1) / 2;
-// 			} else {
-// 				return;
-// 			}
-// 		}
+		while (childIndex > 0) {
+			if (heap.get(childIndex) < heap.get(parentIndex)) {
+				int temp = heap.get(childIndex);
+				heap.set(childIndex, heap.get(parentIndex));
+				heap.set(parentIndex, temp);
+				childIndex = parentIndex;
+				parentIndex = (childIndex - 1) / 2;
+			} else {
+				return;
+			}
+		}
 	}
 
 	int removeMin() throws PriorityQueueEmptyException{
