@@ -11,5 +11,7 @@ public class TrieUse {
         t.add("that");
         t.add("news");
         System.out.println(t.search("news"));
+        t.remove("news");
+        System.out.println(t.search("news"));
     }
 }
