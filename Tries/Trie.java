@@ -38,6 +38,23 @@ public class Trie {
         return search(child,word.substring(1));
     }
 
+    public void remove(String word){
+        remove(root,word);
+    }
+
+    private void remove(TrieNode root, String word) {
+        if(word.length() == 0){
+            root.isTerminating = false;
+            return;
+        }
+        int childIndex = word.charAt(0) - 'a';
+        TrieNode child = root.children[childIndex];
+        if(child == null){
+            return;
+        }
+        remove(child,word.substring(1));
+    }
+
     private void add(TrieNode root, String word){
         if(word.length() == 0){
             root.isTerminating = true;
