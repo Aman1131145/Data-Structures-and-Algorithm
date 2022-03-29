@@ -20,9 +20,11 @@ class TrieNode{
 public class Trie {
 
     private TrieNode root;
+    private int numWords;
 
     public Trie(){
         root = new TrieNode('\0');
+        numWords = 0;
     }
 
     public boolean search(String word){
@@ -41,20 +43,27 @@ public class Trie {
     }
 
     public void remove(String word){
-        remove(root,word);
+        if(remove(root, word)){
+			numWords--;
+		}
     }
 
-    private void remove(TrieNode root, String word) {
+    private boolean remove(TrieNode root, String word) {
         if(word.length() == 0){
-            root.isTerminating = false;
-            return;
+            if(root.isTerminating) {
+				root.isTerminating = false;
+				return true;
+			}
+			else {
+				return false;
+			}
         }
         int childIndex = word.charAt(0) - 'a';
         TrieNode child = root.children[childIndex];
         if(child == null){
-            return;
+            return false;
         }
-        remove(child,word.substring(1));
+        boolean ans = remove(child,word.substring(1));
         // We can remove child node only if it is non terminatiog and its number of children are zero
         if(!child.isTerminating && child.childCount == 0){
             root.children[childIndex] = null;
@@ -74,24 +83,36 @@ public class Trie {
         //         child = null;
         //     }
         // }
+        return ans;
     }
 
-    private void add(TrieNode root, String word){
-        if(word.length() == 0){
-            root.isTerminating = true;
-            return;
-        }
-        int childIndex = word.charAt(0)-'a';
-        TrieNode child = root.children[childIndex];
-        if(child == null){
-            child = new TrieNode(word.charAt(0));
-            root.children[childIndex] = child;
-            root.childCount++;
-        }
-        add(child,word.substring(1));
-    }
+    private boolean add(TrieNode root, String word){
+		if(word.length() == 0){
+			if(root.isTerminating) {
+				return false;
+			}
+			else {
+				root.isTerminating = true;
+				return true;
+			}
+		}		
+		int childIndex = word.charAt(0) - 'a';
+		TrieNode child = root.children[childIndex];
+		if(child == null){
+			child = new TrieNode(word.charAt(0));
+			root.children[childIndex] = child;
+			root.childCount++;
+		}
+		return add(child, word.substring(1));
+	}
 
-    public void add (String word){
-        add(root,word);
-    }
+	public void add(String word){
+		if(add(root, word)) {
+			numWords++;
+		}
+	}
+	
+	public int countWords() {
+        return numWords;
+	}
 }
