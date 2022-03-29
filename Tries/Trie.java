@@ -4,11 +4,13 @@ class TrieNode{
     char data;
     boolean isTerminating;
     TrieNode children[];
+    int childCount;
 
     public TrieNode(char data){
         this.data = data;
         isTerminating = false;
         children = new TrieNode[26];
+        childCount = 0;
     }
 }
 
@@ -53,6 +55,25 @@ public class Trie {
             return;
         }
         remove(child,word.substring(1));
+        // We can remove child node only if it is non terminatiog and its number of children are zero
+        if(!child.isTerminating && child.childCount == 0){
+            root.children[childIndex] = null;
+            child = null;
+            root.childCount--;
+        }
+        // if(!child.isTerminating){
+        //     int numChild = 0;
+        //     for(int i = 0; i < 26; i++){
+        //         if(child.children[i] != null){
+        //             numChild++;
+        //         }
+        //     }
+        //     if(numChild == 0){
+        //         // We can delete child 
+        //         root.children[childIndex] = null;
+        //         child = null;
+        //     }
+        // }
     }
 
     private void add(TrieNode root, String word){
@@ -65,6 +86,7 @@ public class Trie {
         if(child == null){
             child = new TrieNode(word.charAt(0));
             root.children[childIndex] = child;
+            root.childCount++;
         }
         add(child,word.substring(1));
     }
