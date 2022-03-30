@@ -1,5 +1,7 @@
 package Tries;
 
+import java.util.*;
+
 class TrieNode{
     char data;
     boolean isTerminating;
@@ -115,4 +117,22 @@ public class Trie {
 	public int countWords() {
         return numWords;
 	}
+
+    public boolean patternMatching(ArrayList<String> input, String pattern) {
+        for (int i = 0; i < input.size(); i++) {
+        	String word = input.get(i); 
+        	for (int j = 0; j < word.length(); j++) {
+            	add(word.substring(j)); 
+            }
+        }
+        // for(int i=0;i<input.size();i++)
+        // {   
+        //  int j=1;
+        //  while(j<input.get(i).length()){
+        //      add(pattern.substring(j));
+        //      j++;
+        //  }
+        // }
+        return search(root,pattern);
+    }
 }
