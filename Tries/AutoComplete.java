@@ -45,6 +45,7 @@ public class AutoComplete {
 	public void add(String word){
 		add(root, word);
 	}
+    
     public void autoComplete(ArrayList<String> input, String word) {
         for(String w : input) {
             add(w);
