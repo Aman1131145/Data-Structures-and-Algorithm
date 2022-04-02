@@ -6,8 +6,7 @@ import java.util.*;
 public class AutoComplete {
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    
-	
+
 	public static void main(String[] args) throws IOException{
 		AutoComplete t = new AutoComplete();
 		int n = Integer.parseInt(br.readLine().trim());
