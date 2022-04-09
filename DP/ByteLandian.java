@@ -15,18 +15,37 @@ public class ByteLandian {
 
     public static long bytelandian(long n, HashMap<Long, Long> memo) {
         // Write your code here
-        if(n == 0|| n == 1){
+        // if(n == 0|| n == 1){
+        //     return n;
+        // }
+        // if(memo.containsKey(n)){
+        //     return memo.get(n);
+        // }
+        // long max = Math.max(n, bytelandian(n/2,memo) + bytelandian(n/3,memo) + bytelandian(n/4,memo));
+        // if(n<10000){
+        //     memo.put(n,max);
+        // }
+        // return max;
+        
+        if(memo.containsKey(n)){
+	        return memo.get(n);
+        }
+	    if(n == 1){
+	        memo.put(n , 0L);
+	    }
+	    if(n <= 11 && n != 1){
+	        memo.put(n , n);
+	        return n;
+	    }    
+        long ans = bytelandian(n/2 , memo) + bytelandian(n/3 , memo) + bytelandian(n/4 , memo);
+        if(ans >= n){
+           memo.put(n , ans);
+           return ans;
+        }
+        else{
+            memo.put(n , n);
             return n;
         }
-        if(memo.containsKey(n)){
-            return memo.get(n);
-        }
-        long max = Math.max(n, bytelandian(n/2,memo) + bytelandian(n/3,memo) + bytelandian(n/4,memo));
-        if(n<10000){
-            memo.put(n,max);
-        }
-        return max;
-        
 	}
     
 }
