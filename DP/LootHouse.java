@@ -30,17 +30,30 @@ public class LootHouse {
 
     public static int maxMoneyLooted(int[] houses) {
 		//Your code goes here
-        return help(houses,0);
-	}
-    
-    public static int help(int[] house, int si){
-        if(si > house.length-1){
+        if(houses.length == 0){
             return 0;
         }
+        int n = houses.length;
+        int storage[] = new int[n];
         
-        int ans1 = house[si] + help(house, si+2); 
-        int ans2 = help(house,si+1);
+        storage[0] = houses[0];
+        storage[1] = Math.max(houses[0], houses[1]);
         
-        return Math.max(ans1,ans2);
-    }
+        for(int i = 2; i <= n-1; i++){
+            storage[i] = Math.max(houses[i] + storage[i-2], storage[i-1]);
+        }
+        return storage[n-1];
+        // return help(houses,0);
+	}
+    
+//     public static int help(int[] house, int si){
+//         if(si > house.length-1){
+//             return 0;
+//         }
+        
+//         int ans1 = house[si] + help(house, si+2); 
+//         int ans2 = help(house,si+1);
+        
+//         return Math.max(ans1,ans2);
+//     }
 }
