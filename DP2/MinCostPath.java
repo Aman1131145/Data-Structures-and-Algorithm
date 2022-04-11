@@ -22,7 +22,7 @@ public class MinCostPath {
         int op2 = minCostPath(arr, i+1, j+1);
         int op3 = minCostPath(arr, i+1, j);
 
-        return arr[i][j] = Math.min(op1, Math.min(op2, op3));
+        return arr[i][j] + Math.min(op1, Math.min(op2, op3));
     }
 
     public static void main(String args[]){
