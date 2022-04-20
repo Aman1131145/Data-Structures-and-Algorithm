@@ -33,14 +33,25 @@ public class LIS {
     }
 
     public static int lis(int arr[]) {
-        return lis(arr,0);
-    }
-    public static int lis(int arr[], int si){
-        if(si >= arr.length){
-            return 0;
-        }
-        int op1 = 0, op2 = 0;
-        
-        return 1+Math.max(op1,op2);
+        int[] storage = new int[arr.length];
+		storage[0] =1;
+
+		for(int i=1;i<arr.length;i++) {
+			int max = 0;
+			for(int j=i-1;j>=0;j--) {
+
+				if(arr[i] > arr[j] && max < storage[j] ) {
+					max = storage[j];
+				}
+
+			}
+			storage[i] = max +1;
+
+		}
+		int max = Integer.MIN_VALUE;
+		for(int i : storage) {
+			max =  max < i ? i : max ;
+		}
+		return max;
     }
 }
