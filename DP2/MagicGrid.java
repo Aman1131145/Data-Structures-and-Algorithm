@@ -54,15 +54,20 @@ public class MagicGrid {
         int m = R, n = C;
        
         // Base case
-        dp[m-1][n-1] = points[m-1][n-1] > 0? 1:
-                       Math.abs(points[m-1][n-1]) + 1;
+        if(points[m-1][n-1] > 0){
+            dp[m-1][n-1] = 1;
+        }else{
+            dp[m-1][n-1] = Math.abs(points[m-1][n-1]) + 1;
+        }
        
         // Fill last row and last column as base to fill
         // entire table
-        for (int i = m-2; i >= 0; i--)
+        for (int i = m-2; i >= 0; i--){
              dp[i][n-1] = Math.max(dp[i+1][n-1] - points[i][n-1], 1);
-        for (int j = n-2; j >= 0; j--)
+        }
+        for (int j = n-2; j >= 0; j--){
              dp[m-1][j] = Math.max(dp[m-1][j+1] - points[m-1][j], 1);
+        }
        
         // fill the table in bottom-up fashion
         for (int i=m-2; i>=0; i--)
